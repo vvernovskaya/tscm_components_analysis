@@ -1,0 +1,27 @@
+def calculate(mydata, mydata2):
+    quantity_E=0 #количество электронов
+    quantity_Hp=0 #количество ионов водорода
+    quantity_H1=0 #количество H1
+    quantity_H2=0 #количество H2
+    quantity_N=0 #количество неопределенных атомов
+    for i in range (len(mydata)):
+        N=0
+        for j in range (len(mydata[i])):
+
+            N+=int(mydata[i][j].split()[1])
+        if N==6 and len(mydata[i])==4:
+            quantity_H2+=1
+        elif N==3 and len(mydata[i])==2:
+            quantity_H1+=1
+        elif N==1:
+            quantity_Hp+=1
+        elif N==2 and len(mydata[i])==1:
+            quantity_E+=1
+        elif N==6 and len(mydata2[i])==4:
+            quantity_H2+=1
+    quantity_N=2000-quantity_Hp-quantity_E-quantity_H1-quantity_H2          
+    print(quantity_N)
+    print(quantity_Hp)
+    print(quantity_E)
+    print(quantity_H1)
+    print(quantity_H2)    
